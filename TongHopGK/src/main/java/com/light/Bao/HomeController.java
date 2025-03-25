@@ -1,17 +1,19 @@
 package com.light.Bao;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+@Controller
 
 public class HomeController {
 	  @GetMapping("/")
-	    public String home() {
+	    public String index() {
 	        return "frontEnd/index";
 	    }
-	  @GetMapping("/")
+	  @GetMapping("/list")
 	    public String list() {
 	        return "frontEnd/list";
 	    }
-	  @GetMapping("/")
+	  @GetMapping("/addnew")
 	    public String addnew() {
 	        return "frontEnd/addnew";
 	    }
