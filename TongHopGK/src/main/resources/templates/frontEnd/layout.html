@@ -1,221 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Profile - Trần Quốc Bảo</title>
+    <title>Fragments</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #4e73df;
-            --secondary-color: #f8f9fc;
-            --accent-color: #2e59d9;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
-                        url('https://thumbs.dreamstime.com/b/landscape-pine-forests-sunny-day-dalat-vietnam-was-developed-as-resort-french-early-s-tree-forest-98278344.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: inherit;
-            background-size: cover;
-            filter: blur(8px);
-            z-index: -1;
-        }
-        
-        /* Profile Content */
-        .profile-container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
-        }
-        
-        .profile-card {
-            border-radius: 15px;
-            border: none;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: linear-gradient(145deg, #ffffff, #f8f9fc);
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .profile-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-        
-        .profile-header {
-            position: relative;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .profile-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary-color), transparent);
-        }
-        
-        .info-item {
-            margin-bottom: 12px;
-            padding: 8px 10px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .info-item:hover {
-            background-color: rgba(78, 115, 223, 0.05);
-            transform: translateX(5px);
-        }
-        
-        .info-item i {
-            width: 28px;
-            text-align: center;
-            color: var(--primary-color);
-            font-size: 0.95rem;
-        }
-        
-        .btn-home {
-            background-color: var(--primary-color);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-        }
-        
-        .btn-home:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(46, 89, 217, 0.3);
-        }
-        
-        .social-links {
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
-            margin-right: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-3px);
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-    <!-- Header Fragment -->
-    <div th:replace="~{frontEnd/layout :: header}"></div>
-    
-    <!-- Profile Content -->
-    <div class="profile-container">
-        <div class="container">
-            <div class="profile-card card p-4">
-                <div class="row align-items-center">
-                    <div class="col-md-4 text-center">
-                        <div class="position-relative mb-4">
-                            <img src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t1.6435-9/87811647_119142113007122_5796329571661905920_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=A17JKQImZGsQ7kNvgFy3erE&_nc_oc=AdnkChGyh9e9XoU5739X2uzWOag_Ro8qsPKkX49a_IyL7R4C4uMhJP9wHy8Cgfpaz6NeeTkjovr6Y_VHBRJvLQhi&_nc_zt=23&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=lYhNZrBWiq9_hdc1X0_Fcw&oh=00_AYF9ZaCl-0JdmQKhNdKb1BkVZ5CXmx8o0LtNI9K5_sBkYw&oe=6808FD9A" 
-                                 alt="Avatar" 
-                                 class="profile-img rounded-circle img-fluid">
-                            <div class="position-absolute bottom-0 end-0 bg-primary text-white rounded-circle p-1" style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-camera" style="font-size: 0.8rem;"></i>
-                            </div>
-                        </div>
-                        
-                        <div class="social-links">
-                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-8">
-                        <div class="profile-header">
-                            <h3 class="fw-bold text-primary mb-1">Trần Quốc Bảo</h3>
-                            <p class="text-muted mb-0">Sinh viên Công nghệ thông tin</p>
-                        </div>
-                        
-                        <div class="profile-info">
-                            <div class="info-item">
-                                <p><i class="fas fa-calendar-alt"></i> <strong>Ngày sinh:</strong> 03/01/2004</p>
-                            </div>
-                            <div class="info-item">
-                                <p><i class="fas fa-map-marker-alt"></i> <strong>Quê quán:</strong> Nha Trang - Khánh Hòa</p>
-                            </div>
-                            <div class="info-item">
-                                <p><i class="fas fa-id-badge"></i> <strong>MSSV:</strong> <span class="badge bg-primary">64130135</span></p>
-                            </div>
-                            <div class="info-item">
-                                <p><i class="fas fa-laptop-code"></i> <strong>Ngành:</strong> Công nghệ thông tin</p>
-                            </div>
-                            <div class="info-item">
-                                <p><i class="fas fa-phone"></i> <strong>Số điện thoại:</strong> 
-                                    <a href="tel:0368754310" class="text-decoration-none">0368 754 310</a>
-                                </p>
-                            </div>
-                            
-                            <a href="/" class="btn btn-home mt-3">
-                                <i class="fas fa-home me-2"></i> Quay về Trang Chủ
-                            </a>
-                        </div>
-                    </div>
+    <div th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <b> Wellcome</b>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/addnew">AddNew</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">List</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
+        </nav>
     </div>
-    
-    <!-- Footer Fragment -->
-    <div th:replace="~{frontEnd/layout :: footer}"></div>
+
+    <div th:fragment="footer">
+        <footer class="footer bg-dark text-white text-center py-3">
+            <p>&copy; 2025 BaroDeMole. All rights reserved.</p>
+            <div>
+                <a href="https://www.facebook.com/profile.php?id=100047340020568" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </footer>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/scripts.js}"></script>
 </body>
 </html>
