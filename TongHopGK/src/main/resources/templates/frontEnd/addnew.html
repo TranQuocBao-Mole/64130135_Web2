@@ -1,10 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Sinh Viên Mới</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+          body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                        url('https://thumbs.dreamstime.com/b/landscape-pine-forests-sunny-day-dalat-vietnam-was-developed-as-resort-french-early-s-tree-forest-98278344.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            background-size: cover;
+            filter: blur(8px);
+            z-index: -1;
+        }
+        
+       .profile-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        
+        .profile-card {
+            border-radius: 15px;
+            border: none;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #f8f9fc);
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-header {
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-icon {
+            color: #6c757d;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .btn-submit {
+            width: 100%;
+            padding: 10px;
+            font-weight: 500;
+        }
+        
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .social-icon {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgb(192, 192, 192);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: rgb(192, 192, 192);
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 1rem;
+            }
+            
+            .form-group.row {
+                flex-direction: column;
+            }
+            
+            .form-group.row label {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
+    <!-- Header from layout -->
+    <div th:replace="~{frontEnd/layout :: header}"></div>
+    
+    <div class="profile-container">
+        <div class="container">
+            <div class="profile-card card p-4">
+                <div class="form-header">
+                    <h3 class="fw-bold text-primary mb-1">Thêm Sinh Viên Mới</h3>
+                    <p class="text-muted">Vui lòng điền đầy đủ thông tin sinh viên</p>
+                </div>
+                
+                <form th:action="@{/students/save}" method="post">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-user form-icon"></i> <strong>Họ và tên:</strong></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-calendar-alt form-icon"></i> <strong>Ngày sinh:</strong></label>
+                        <div class="col-sm-9">
+                            <input type="date" class="form-control" name="birthday" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-map-marker-alt form-icon"></i> <strong>Quê quán:</strong></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="hometown" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-id-badge form-icon"></i> <strong>MSSV:</strong></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="studentId" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-laptop-code form-icon"></i> <strong>Ngành học:</strong></label>
+                        <div class="col-sm-9">
+                            <select class="form-select" name="major" required>
+                                <option value="">Chọn ngành học</option>
+                                <option value="Công nghệ thông tin">Công nghệ thông tin</option>
+                                <option value="Kỹ thuật phần mềm">Kỹ thuật phần mềm</option>
+                                <option value="Khoa học máy tính">Khoa học máy tính</option>
+                                <option value="An toàn thông tin">An toàn thông tin</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-phone form-icon"></i> <strong>Số điện thoại:</strong></label>
+                        <div class="col-sm-9">
+                            <input type="tel" class="form-control" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-envelope form-icon"></i> <strong>Email:</strong></label>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"><i class="fas fa-graduation-cap form-icon"></i> <strong>Điểm TB:</strong></label>
+                        <div class="col-sm-9">
+                            <input type="number" step="0.01" min="0" max="10" class="form-control" name="gpa" required>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fas fa-save me-2"></i> Lưu thông tin
+                        </button>
+                        <a href="/list" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i> Quay lại
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div th:replace="frontEnd/layout::footer"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
