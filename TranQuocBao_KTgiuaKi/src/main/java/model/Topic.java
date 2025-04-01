@@ -16,5 +16,10 @@ public class Topic {
         this.topicType = topicType;
     }
 
+	public Object getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
     // Getters & Setters (generate these in your IDE)
 }

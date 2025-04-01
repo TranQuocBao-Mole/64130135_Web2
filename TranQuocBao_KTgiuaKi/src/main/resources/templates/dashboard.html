@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,47 +10,22 @@
     <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
         <div class="flex justify-between items-center mb-4">
             <div class="text-lg font-bold">©2025 by Student-Name - FIT.NTU</div>
-            <div class="text-sm">[UserName]</div>
+            <div class="text-sm" th:text="${#httpServletRequest.remoteUser} ?: 'Guest'">[UserName]</div>
         </div>
         <div class="flex">
             <div class="w-1/4 border-r-2 border-gray-200 pr-4">
                 <div class="font-bold mb-2">Dashboard</div>
                 <ul class="space-y-2">
-                    <li class="font-bold">Student - List</li>
-                    <li>Student - Addnew</li>
-                    <li>Topic - List</li>
-                    <li>Topic - Addnew</li>
+                    <li><a href="/student/all" class="font-bold hover:text-blue-600">Student - List</a></li>
+                    <li><a href="/student/new" class="hover:text-blue-600">Student - Addnew</a></li>
+                    <li><a href="/topic/all" class="hover:text-blue-600">Topic - List</a></li>
+                    <li><a href="/topic/new" class="hover:text-blue-600">Topic - Addnew</a></li>
                 </ul>
             </div>
             <div class="w-3/4 pl-4">
-                <div class="font-bold mb-2">Content</div>
+                <div class="font-bold mb-2">Welcome to Student-Topic Management System</div>
                 <div class="text-sm">
-                    <p>6. Tạo các lớp (dặt trong packet model): Topic (id, topicName, supervisorId, topicType), Student (id, name, groupId) Hard-code danh sách các Topic.</p>
-                    <p>7. Code thao tác trên Topic</p>
-                    <ul class="list-disc list-inside">
-                        <li>Topic - List (Url: /topic/all) (1đ): Hiện danh sách các topic. Mỗi dòng gồm:</li>
-                        <ul class="list-decimal list-inside ml-4">
-                            <li>id</li>
-                            <li>topicName</li>
-                            <li>supervisorId</li>
-                            <li>topicType</li>
-                            <li>[view] [edit] [delete]</li>
-                        </ul>
-                        <li>Topic - Addnew (Url: /topic/new) (1đ): Thêm mới một topic</li>
-                        <li>Topic - View (Url: /topic/view/id) (1đ): Xem topic theo Id</li>
-                        <li>Topic - Delete (Url: /topic/delete/id) (1đ): Xóa topic theo Id</li>
-                    </ul>
-                    <p>8. Code thao tác trên Student (1đ)</p>
-                    <ul class="list-disc list-inside">
-                        <li>Student - List (Url: /student/all) (1đ): Hiện danh sách sinh viên. Mỗi dòng gồm:</li>
-                        <ul class="list-decimal list-inside ml-4">
-                            <li>id</li>
-                            <li>name</li>
-                            <li>groupId</li>
-                            <li>[view] [edit] [delete]</li>
-                        </ul>
-                        <li>Student - Addnew (Url: /student/new) (1đ): Thêm mới một student</li>
-                    </ul>
+                    <p>Use the navigation menu to manage students and topics.</p>
                 </div>
             </div>
         </div>

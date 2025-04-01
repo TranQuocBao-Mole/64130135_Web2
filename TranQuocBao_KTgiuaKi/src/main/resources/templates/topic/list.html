@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Topic List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-4">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-4">Topic List</h1>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2">ID</th>
+                    <th class="py-2">Topic Name</th>
+                    <th class="py-2">Supervisor</th>
+                    <th class="py-2">Type</th>
+                    <th class="py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="topic : ${topics}">
+                    <td class="border px-4 py-2" th:text="${topic.id}"></td>
+                    <td class="border px-4 py-2" th:text="${topic.topicName}"></td>
+                    <td class="border px-4 py-2" th:text="${topic.supervisorId}"></td>
+                    <td class="border px-4 py-2" th:text="${topic.topicType}"></td>
+                    <td class="border px-4 py-2">
+                        <a th:href="@{/topic/view/} + ${topic.id}" class="text-blue-600">View</a>
+                        <a th:href="@{/topic/edit/} + ${topic.id}" class="ml-2 text-green-600">Edit</a>
+                        <a th:href="@{/topic/delete/} + ${topic.id}" class="ml-2 text-red-600">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/topic/new" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">Add New Topic</a>
+    </div>
+</body>
+</html>

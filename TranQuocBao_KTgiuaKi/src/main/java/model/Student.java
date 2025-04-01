@@ -13,3 +13,9 @@ public class Student {
         this.name = name;
         this.groupId = groupId;
     }
+
+	public Object getId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

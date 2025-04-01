@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Edit Student</h1>
+        <form th:action="@{/student/update/} + ${student.id}" th:object="${student}" method="post">
+            <!-- Same fields as add.html but with existing values -->
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Student ID</label>
+                <input type="text" th:field="*{id}" class="w-full px-3 py-2 border rounded" readonly>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Name</label>
+                <input type="text" th:field="*{name}" class="w-full px-3 py-2 border rounded">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">Group ID</label>
+                <input type="text" th:field="*{groupId}" class="w-full px-3 py-2 border rounded">
+            </div>
+            <div class="flex justify-between">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Update Student
+                </button>
+                <a href="/student/all" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

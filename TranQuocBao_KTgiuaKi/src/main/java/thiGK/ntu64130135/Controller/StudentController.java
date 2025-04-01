@@ -39,4 +39,26 @@ public class StudentController {
         students.add(student);
         return "redirect:/student/all";
     }
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        Student student = students.stream()
+                .filter(s -> s.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
+        model.addAttribute("student", student);
+        return "student/edit";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateStudent(@PathVariable String id, @ModelAttribute Student student) {
+        students.removeIf(s -> s.getId().equals(id));
+        students.add(student);
+        return "redirect:/student/all";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable String id) {
+        students.removeIf(s -> s.getId().equals(id));
+        return "redirect:/student/all";
+    }
 }

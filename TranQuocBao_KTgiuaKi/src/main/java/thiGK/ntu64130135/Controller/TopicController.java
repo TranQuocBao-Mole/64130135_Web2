@@ -40,4 +40,26 @@ public class TopicController {
         topics.add(topic);
         return "redirect:/topic/all";
     }
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        Topic topic = topics.stream()
+                .filter(t -> t.getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid topic Id:" + id));
+        model.addAttribute("topic", topic);
+        return "topic/edit";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateTopic(@PathVariable String id, @ModelAttribute Topic topic) {
+        topics.removeIf(t -> t.getId().equals(id));
+        topics.add(topic);
+        return "redirect:/topic/all";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTopic(@PathVariable String id) {
+        topics.removeIf(t -> t.getId().equals(id));
+        return "redirect:/topic/all";
+    }
 }
