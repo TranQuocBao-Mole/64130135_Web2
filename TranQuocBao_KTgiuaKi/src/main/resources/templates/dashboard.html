@@ -10,7 +10,7 @@
     <div class="dashboard-container">
         <div class="dashboard-header">
             <div class="logo">©<span th:text="${currentYear}">2025</span> by Student-Name - FIT.NTU</div>
-            <div class="user-info" th:text="${#httpServletRequest.remoteUser} ?: 'Guest'">[UserName]</div>
+            <div class="user-info" th:text="${#httpServletRequest?.remoteUser} ?: 'Guest'">[UserName]</div>
         </div>
         
         <div class="dashboard-main">
