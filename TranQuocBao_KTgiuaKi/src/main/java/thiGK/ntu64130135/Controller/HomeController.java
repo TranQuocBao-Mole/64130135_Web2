@@ -1,5 +1,4 @@
 package thiGK.ntu64130135.Controller;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
