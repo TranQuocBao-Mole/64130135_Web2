@@ -6,62 +6,56 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100">
-    <div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
-        <!-- Header -->
-        <div class="flex justify-between items-center mb-4">
-            <div class="text-lg font-bold">©<span th:text="${currentYear}">2025</span> by Student-Name - FIT.NTU</div>
-            <div class="text-sm" th:text="${#httpServletRequest.remoteUser} ?: 'Guest'">[UserName]</div>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="logo">©<span th:text="${currentYear}">2025</span> by Student-Name - FIT.NTU</div>
+            <div class="user-info" th:text="${#httpServletRequest.remoteUser} ?: 'Guest'">[UserName]</div>
         </div>
         
-        <!-- Main Content -->
-        <div class="flex">
-            <!-- Sidebar -->
-            <div class="w-1/4 border-r-2 border-gray-200 pr-4">
-                <div class="font-bold mb-2">Dashboard</div>
-                <ul class="space-y-2">
-                    <li><a href="/student/all" class="font-bold hover:text-blue-600">Student - List</a></li>
-                    <li><a href="/student/new" class="hover:text-blue-600">Student - Addnew</a></li>
-                    <li><a href="/topic/all" class="hover:text-blue-600">Topic - List</a></li>
-                    <li><a href="/topic/new" class="hover:text-blue-600">Topic - Addnew</a></li>
+        <div class="dashboard-main">
+            <div class="dashboard-sidebar">
+                <div class="sidebar-title">Dashboard</div>
+                <ul>
+                    <li><a href="/student/all">Student - List</a></li>
+                    <li><a href="/student/new">Student - Addnew</a></li>
+                    <li><a href="/topic/all">Topic - List</a></li>
+                    <li><a href="/topic/new">Topic - Addnew</a></li>
                 </ul>
             </div>
             
-            <!-- Content Area -->
-            <div class="w-3/4 pl-4">
-                <h2 class="text-xl font-bold mb-4">Welcome to Student Management System</h2>
+            <div class="dashboard-content">
+                <h2>Welcome to Student Management System</h2>
                 
-                <!-- Stats Cards -->
-                <div class="grid grid-cols-3 gap-4 mb-6">
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h3 class="font-bold text-blue-800 mb-2">
-                            <i class="fas fa-users mr-2"></i>Students
+                <div class="stats-grid">
+                    <div class="stat-card bg-blue-50">
+                        <h3 class="text-blue-800">
+                            <i class="fas fa-users"></i>Students
                         </h3>
-                        <p class="text-2xl font-bold" th:text="${dashboardStats.studentCount}">0</p>
+                        <p th:text="${dashboardStats.studentCount}">0</p>
                     </div>
-                    <div class="bg-green-50 p-4 rounded-lg">
-                        <h3 class="font-bold text-green-800 mb-2">
-                            <i class="fas fa-book mr-2"></i>Topics
+                    <div class="stat-card bg-green-50">
+                        <h3 class="text-green-800">
+                            <i class="fas fa-book"></i>Topics
                         </h3>
-                        <p class="text-2xl font-bold" th:text="${dashboardStats.topicCount}">0</p>
+                        <p th:text="${dashboardStats.topicCount}">0</p>
                     </div>
-                    <div class="bg-purple-50 p-4 rounded-lg">
-                        <h3 class="font-bold text-purple-800 mb-2">
-                            <i class="fas fa-chalkboard-teacher mr-2"></i>Supervisors
+                    <div class="stat-card bg-purple-50">
+                        <h3 class="text-purple-800">
+                            <i class="fas fa-chalkboard-teacher"></i>Supervisors
                         </h3>
-                        <p class="text-2xl font-bold" th:text="${dashboardStats.supervisorCount}">0</p>
+                        <p th:text="${dashboardStats.supervisorCount}">0</p>
                     </div>
                 </div>
                 
-                <!-- Quick Links -->
-                <div class="bg-gray-50 p-4 rounded-lg">
-                    <h3 class="font-bold mb-2">Quick Actions</h3>
-                    <div class="flex space-x-4">
-                        <a href="/student/new" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                            <i class="fas fa-user-plus mr-2"></i>Add Student
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <a href="/student/new" class="action-button bg-blue-500">
+                            <i class="fas fa-user-plus"></i>Add Student
                         </a>
-                        <a href="/topic/new" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                            <i class="fas fa-book-medical mr-2"></i>Add Topic
+                        <a href="/topic/new" class="action-button bg-green-500">
+                            <i class="fas fa-book-medical"></i>Add Topic
                         </a>
                     </div>
                 </div>
